@@ -55,4 +55,4 @@ Tools used:
 - query_knowledge  
 - analyze_patterns  
 
-## Updated with explicit tool calls and error handling in agent implementation.
+## Updated with explicit tool calls and error handling in agent implementation."update real lpi call" 
