@@ -14,3 +14,9 @@ PROVENANCE (tools used)
 [1] smile_overview (no args)
 [2] query_knowledge ({"query": "What is SMILE methodology?"})
 [3] get_case_studies (no args)
+
+### Evidence 3: Explainability in Action
+Explainability is deeply integrated into the LLM's response. When prompted, the agent uses inline citations to trace its logic back to the tools. Here is an example of what it says when asked to explain a recommendation:
+
+**User Question:** "Why do you recommend starting with Reality Emulation?"
+**Agent Answer:** "I recommend starting with Reality Emulation because it is the foundational Phase 1 of the SMILE methodology, which focuses on creating a shared reality canvas before investing heavily in sensors **[Tool 1: smile_overview]**. According to the methodology steps, this phase takes days to weeks and helps establish 'where and when' **[Tool 2: get_methodology_step]**. Furthermore, the 'Smart Heating for Municipal Schools' case study shows that skipping this alignment leads to disjointed data silos later on **[Tool 3: get_case_studies]**."
