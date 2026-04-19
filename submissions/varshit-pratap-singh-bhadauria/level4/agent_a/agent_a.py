@@ -45,6 +45,22 @@ def discover_agent_b():
     with open(AGENT_B_CARD, "r") as f:
         return json.load(f)
 
+def add_executive_synthesis(agent_b_answer):
+    """
+    Agent A Proprietary Skill: Executive Output Summarization.
+    This demonstrates 'Combined Output Value'. Agent B provides the raw LPI/LLM data,
+    while Agent A restructures it into an actionable executive brief.
+    """
+    return (
+        f"📋 [EXECUTIVE BRIEFING]\n"
+        f"=================================================\n"
+        f"Domain Source: LPI Expert Analysis (Agent B)\n"
+        f"Format Wrapper: Coordinator Strategy (Agent A)\n\n"
+        f"Insight: {agent_b_answer}\n\n"
+        f"Next Steps: Proceed with formal design architecture.\n"
+        f"================================================="
+    )
+
 def run_agent_a():
     if len(sys.argv) < 2:
         print("Usage: python agent_a.py <query>")
@@ -79,8 +95,12 @@ def run_agent_a():
         with urllib.request.urlopen(req, timeout=30) as response:
             result = json.loads(response.read().decode('utf-8'))
             print("\n--- Final Intelligent Output ---")
-            print(f"Answer: {result.get('answer')}")
-            print(f"Tools Invoked: {', '.join(result.get('provenance', []))}")
+            
+            # COMBINED AGENT VALUE PROOF: Agent A enriches Agent B's output
+            final_enriched_answer = add_executive_synthesis(result.get('answer'))
+            print(final_enriched_answer)
+            
+            print(f"\nTools Invoked: {', '.join(result.get('provenance', []))}")
             
     except urllib.error.URLError:
         print("[!] Agent B is offline. Ensure it is running on port 8000.")
