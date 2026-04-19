@@ -11,3 +11,9 @@ Initially, when trying to submit my PR, I accidentally deleted another contribut
 
 **What I learned:**
 I learned how strictly GitHub Actions can enforce repository rules, the importance of isolating your work into your own directories, and how to safely reset a Git workflow when things get tangled. I also learned how MCP tools connect with a local Ollama instance to provide grounded AI answers.
+
+## Choices Made (Not in Instructions)
+The most critical choice I made outside the standard instructions was implementing an "Auto-Discovery Path Hunter" for the LPI MCP server. Because I built the agent in a completely separate repository to maintain clean modularity, the standard relative pathing (`..`) broke. I wrote a custom `find_lpi_server()` function. It checks for an environment variable first, then intelligently scans adjacent parent directories to accommodate automated bot workspaces, and finally falls back to a local path. This guarantees the code won't break during automated evaluation or human review.
+
+## What I Would Do Differently Next Time
+Next time, to make deployment even more seamless, I would package the agent inside a Docker container using a docker-compose network to connect to the LPI server, eliminating file-path hunting altogether. I would also add an A2A Agent Card dynamically so the agent could integrate directly into the LifeAtlas mesh.
