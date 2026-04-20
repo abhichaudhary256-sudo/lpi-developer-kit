@@ -55,6 +55,11 @@ The agent ensures explainability by clearly separating outputs from each LPI too
 Input:
 python agent.py "What are digital twins in healthcare?"
 
+This makes the system fully explainable because the user can clearly see:
+- Which tool contributed what  
+- How the final answer was constructed  
+- That the response is not generated blindly by the LLM
+
 Output:
 - SMILE overview  
 - Knowledge explanation  
